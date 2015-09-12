@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en{{ end }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Site.Title }}</title>
+	<meta name="keywords" content="{{ .Site.Params.keywords }}">
+	<meta name="description" content="{{ .Site.Params.description }}">
+  <link rel="stylesheet" href="css/combo.css">
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  {{ if .Site.Params.favicon }}<link rel="shortcut icon" href="{{ .Site.Params.favicon }}" type="image/x-icon">{{ end }}
+	{{ if .Site.Params.touch_icon }}<link rel="apple-touch-icon" href="{{ .Site.Params.touch_icon }}">{{ end }}
+</head>
+<body>
+  <div id="main">
+
+    <nav><ul>
+      {{ range (where .Data.Pages "Section" "post").ByDate }}
+        <li class="p-{{.LinkTitle}}"><a href="#{{.LinkTitle}}">{{.Title}}</a></li>
+      {{ end }}
+    </ul></nav>
+
+    {{ range (where .Data.Pages "Section" "post").ByDate }}
+      <div id="{{.LinkTitle}}" class="section p-{{.LinkTitle}}">
+        {{ if .Params.fa_icon }}
+        <div class="subtlecircle sectiondivider faicon">
+          <span class="fa-stack">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-{{ .Params.fa_icon }} fa-stack-1x"></i>
+          </span>
+          <h5 class="icon-title">{{ .Params.title }}</h5>
+        </div>
+        {{ end }}
+        <div class="container {{ .Params.style }}">
+          {{ .Content }}
+        </div>
+      </div>
+    {{ end }}
+
+
+    <div id="footer" class="section text-white">
+      <div class="container">
+        {{ template "footer.html"}}
+      </div>
+    </div>
+
+
+{{ template "partials/analytics.html" . }}
+
+
+  </div>
+</body>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="/js/site.js"></script>
+</html>

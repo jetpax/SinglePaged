@@ -1,0 +1,18 @@
+
+baseURL = ""
+LanguageCode = "en-US"
+MetaDataFormat = "toml"
+title = "SinglePaged - Simple Hugo template"
+theme = "SinglePaged"
+pygmentsuseclasses = false
+
+
+[params]
+  description = "A single-page template for Hugo based blogs (like what you'd use on github pages!)"
+  author = "jetpax"
+  keywords =    "SinglePaged"
+  favicon =     "img/favicon.ico"
+  touch_icon =  "img/apple-touch-icon.png"
+  google_analytics_key = "" ## put YOUR key here to enable tracking! (blank to disable)
+  source_link = "https://github.com/jetpax/SinglePaged"
+
